@@ -2,7 +2,7 @@ import { Container, Grid, Typography } from '@mui/material';
 import React from 'react';
 import MyButton from '../StyledComponents/MyButton';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
-import { Box } from '@mui/system';
+
 
 
 const TopBanner = () => {
