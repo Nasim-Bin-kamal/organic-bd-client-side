@@ -70,7 +70,7 @@ const Footer = () => {
                                 <NavLink style={style} to="/contact">Contact</NavLink>
                             </ListItem>
                             <ListItem>
-                                <NavLink style={style} to="/projects">Projects</NavLink>
+                                <NavLink style={style} to="/projects">Shops</NavLink>
                             </ListItem>
                             <ListItem>
                                 <NavLink style={style} to="/blogs">Blogs</NavLink>
