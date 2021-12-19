@@ -19,8 +19,8 @@ const pages = [
         pageLink: '/home'
     },
     {
-        title: 'Products',
-        pageLink: '/products'
+        title: 'Shop',
+        pageLink: '/shop'
     },
     {
         title: 'About',
