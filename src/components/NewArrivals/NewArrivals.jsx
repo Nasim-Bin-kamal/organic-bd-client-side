@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Paper, Typography } from '@mui/material';
+import { Box, Container, Fab, Grid, Paper, Typography } from '@mui/material';
 import React from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import './NewArrivals.css';
@@ -67,7 +67,10 @@ const NewArrivals = () => {
                                     <Box className='content-overlay'></Box>
                                     <img className='content-image' src={vegetable?.image} alt="" />
                                     <Box className='content-details fadeIn-bottom'>
-                                        <AddShoppingCartIcon sx={{ p: 1, backgroundColor: '#fff', borderRadius: '50%', fontSize: '40px', cursor: 'pointer' }} />
+                                        {/* <AddShoppingCartIcon sx={{ p: 1, backgroundColor: '#fff', borderRadius: '50%', fontSize: '40px', cursor: 'pointer' }} /> */}
+                                        <Fab title="add to cart">
+                                            <AddShoppingCartIcon sx={{ fontSize: '34px' }} />
+                                        </Fab>
                                     </Box>
                                 </Box>
                                 <Typography variant='h5' sx={{ mt: 1, textAlign: 'center' }}>

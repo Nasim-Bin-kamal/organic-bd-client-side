@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Badge } from '@mui/material';
 
 const pages = [
     {
@@ -32,7 +34,16 @@ const pages = [
     }
 ];
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = [
+    {
+        pageName: 'Profile',
+        pageLink: '/profile'
+    },
+    {
+        pageName: 'Dashboard',
+        pageLink: '/dashboard'
+    }
+];
 
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -55,17 +66,18 @@ const Header = () => {
 
     return (
         <AppBar position="static" sx={{ py: 1, backgroundColor: '#E2F3DD', boxShadow: 0 }}>
-            <Container >
+            <Container>
 
                 <Toolbar disableGutters>
-                    <Typography
+                    <Box
                         variant="h6"
                         noWrap
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        LOGO
-                    </Typography>
+                        <img src="https://i.ibb.co/p1x5173/Screenshot-2021-12-21-011139-removebg-preview.png" alt="" />
+                    </Box>
+
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
@@ -97,9 +109,9 @@ const Header = () => {
                             }}
                         >
 
-                            {pages.map((page) => (
-                                <Link style={{ textDecoration: 'none' }} key={Math.random()} to={page?.pageLink}>
-                                    <MenuItem key={Math.random()} onClick={handleCloseNavMenu}>
+                            {pages.map((page, i) => (
+                                <Link style={{ textDecoration: 'none' }} key={i} to={page?.pageLink}>
+                                    <MenuItem onClick={handleCloseNavMenu}>
                                         <Typography textAlign="center" sx={{ color: "black" }}>{page?.title}</Typography>
                                     </MenuItem>
                                 </Link>
@@ -108,14 +120,15 @@ const Header = () => {
 
                         </Menu>
                     </Box>
-                    <Typography
-                        variant="h6"
+                    <Box
+
                         noWrap
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                     >
-                        LOGO
-                    </Typography>
+                        <img src="https://i.ibb.co/p1x5173/Screenshot-2021-12-21-011139-removebg-preview.png" alt="" width="80%" />
+                    </Box>
+
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Link style={{ textDecoration: 'none' }} key={Math.random()} to={page?.pageLink}>
@@ -129,8 +142,13 @@ const Header = () => {
                             </Link>
                         ))}
                     </Box>
-
+                    <Box sx={{ mr: 3 }}>
+                        <Badge color="secondary" badgeContent={2}>
+                            <ShoppingCartIcon sx={{ fontSize: '30px', color: '#1BAB42' }} />
+                        </Badge>
+                    </Box>
                     <Box sx={{ flexGrow: 0 }}>
+
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -152,10 +170,12 @@ const Header = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
+                            {settings.map((setting, i) => (
+                                <Link style={{ textDecoration: 'none' }} key={i} to={setting?.pageLink}>
+                                    <MenuItem onClick={handleCloseNavMenu}>
+                                        <Typography textAlign="center" sx={{ color: "black" }}>{setting?.pageName}</Typography>
+                                    </MenuItem>
+                                </Link>
                             ))}
                         </Menu>
                     </Box>
