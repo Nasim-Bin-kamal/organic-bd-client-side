@@ -65,7 +65,7 @@ const Header = () => {
     };
 
     return (
-        <AppBar position="static" sx={{ py: 1, backgroundColor: '#E2F3DD', boxShadow: 0 }}>
+        <AppBar position="static" sx={{ pb: 1, backgroundColor: '#E2F3DD', boxShadow: 0 }}>
             <Container>
 
                 <Toolbar disableGutters>
@@ -75,7 +75,7 @@ const Header = () => {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        <img src="https://i.ibb.co/p1x5173/Screenshot-2021-12-21-011139-removebg-preview.png" alt="" />
+                        <img src="https://i.ibb.co/p1x5173/Screenshot-2021-12-21-011139-removebg-preview.png" alt="" width="100%" />
                     </Box>
 
 

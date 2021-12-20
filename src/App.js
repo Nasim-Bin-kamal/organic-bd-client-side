@@ -13,7 +13,7 @@ import Home from './pages/Home/Home';
 import ManageOrders from './pages/ManageOrders/ManageOrders';
 import ManageProducts from './pages/ManageProducts/ManageProducts';
 import MyOrders from './pages/MyOrders/MyOrders';
-import Products from './pages/Products/Products';
+import Shop from './pages/Shop/Shop';
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/Shop" element={<Shop />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />

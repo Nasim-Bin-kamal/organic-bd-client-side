@@ -1,18 +1,17 @@
-import { Box, Container, Fab, Grid, Paper, Typography } from '@mui/material';
+import { Container, Fab, Grid, Paper, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import React from 'react';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import './NewArrivals.css';
 import { products } from '../../Data/products';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-const NewArrivals = () => {
+const AllProducts = () => {
     return (
         <div>
             <Container>
-                <Typography variant='h4' sx={{ mx: 'auto', py: 5, textAlign: 'center', fontWeight: 500 }}>
-                    Top Seasonal products
+                <Typography variant='h4' sx={{ py: 3, textAlign: 'center' }}>
+                    ALL PRODUCTS
                 </Typography>
-
-                <Grid container spacing={4}>
+                <Grid container spacing={4} sx={{ my: 5 }}>
                     {
                         products?.map((product, v_id) => <Grid key={v_id} item xs={12} md={6} lg={4}>
                             <Paper elevation={3}>
@@ -36,11 +35,9 @@ const NewArrivals = () => {
                         </Grid>)
                     }
                 </Grid>
-
             </Container>
         </div>
     );
 };
 
-export default NewArrivals;
-
+export default AllProducts;
