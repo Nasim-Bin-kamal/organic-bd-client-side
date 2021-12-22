@@ -7,7 +7,7 @@ import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 const TopBanner = () => {
     return (
-        <div style={{ backgroundColor: '#E2F3DD', height: '100vh' }}>
+        <div style={{ backgroundColor: '#E2F3DD', height: '100vh', minHeight: '500px', display: 'flex', alignItems: 'center' }}>
             <Container>
                 <Grid container spacing={2} sx={{ mx: 'auto', alignItems: 'center' }}>
                     <Grid item xs={12} sm={12} md={6} lg={5} sx={{ mx: 'auto', px: 2 }}>

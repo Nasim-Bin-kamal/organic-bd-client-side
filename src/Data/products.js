@@ -31,7 +31,7 @@ export const products = [
     },
     {
         name: "Corn",
-        image: "https://i.ibb.co/zmxzCtG/asset-42.jpg",
+        image: "https://i.ibb.co/q9KgJZW/asset-8.jpg",
         price: "60"
     },
     {

@@ -23,26 +23,26 @@ const drawerWidth = 240;
 const adminPages = [
     {
         pageTitle: 'Manage Product',
-        pageLink: '/manageProducts'
+        pageLink: '/dashboard/manageProducts'
     },
     {
         pageTitle: 'Add Products',
-        pageLink: '/addProducts'
+        pageLink: '/dashboard/addProducts'
     },
     {
         pageTitle: 'Manage Orders',
-        pageLink: '/manageOrders'
+        pageLink: '/dashboard/manageOrders'
     }
 ];
 
 const userPages = [
     {
         pageTitle: 'My Orders',
-        pageLink: '/myOrders'
+        pageLink: '/dashboard/myOrders'
     },
     {
         pageTitle: 'Add Review',
-        pageLink: '/addReview'
+        pageLink: '/dashboard/addReview'
     }
 ];
 
@@ -61,6 +61,14 @@ function Dashboard(props) {
             </Toolbar>
             <Divider />
             <List>
+                <ListItem button>
+                    <Link to="/home" style={{ textDecoration: 'none' }}>
+                        <MenuItem>
+                            <Typography textAlign="center" sx={{ color: "black" }}>Home</Typography>
+                        </MenuItem>
+                    </Link>
+                </ListItem>
+
                 {adminPages.map((adminPage, index) => (
                     <ListItem button key={index}>
                         {/* <ListItemIcon>

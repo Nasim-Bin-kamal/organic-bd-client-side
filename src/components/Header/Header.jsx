@@ -17,32 +17,41 @@ import { Badge } from '@mui/material';
 
 const pages = [
     {
-        title: 'Home',
+        pageTitle: 'Home',
         pageLink: '/home'
     },
     {
-        title: 'Shop',
+        pageTitle: 'Shop',
         pageLink: '/shop'
     },
     {
-        title: 'About',
+        pageTitle: 'About',
         pageLink: '/about'
     },
     {
-        title: 'Contact',
+        pageTitle: 'Contact',
         pageLink: '/contact'
     }
 ];
 
 const settings = [
     {
-        pageName: 'Profile',
+        pageTitle: 'Profile',
         pageLink: '/profile'
     },
     {
-        pageName: 'Dashboard',
+        pageTitle: 'Login',
+        pageLink: '/login'
+    },
+    {
+        pageTitle: 'Register',
+        pageLink: '/register'
+    },
+    {
+        pageTitle: 'Dashboard',
         pageLink: '/dashboard'
     }
+
 ];
 
 const Header = () => {
@@ -65,7 +74,7 @@ const Header = () => {
     };
 
     return (
-        <AppBar position="static" sx={{ pb: 1, backgroundColor: '#E2F3DD', boxShadow: 0 }}>
+        <AppBar position="fixed" sx={{ pb: 1, backgroundColor: '#E2F3DD', boxShadow: 0 }}>
             <Container>
 
                 <Toolbar disableGutters>
@@ -75,7 +84,7 @@ const Header = () => {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        <img src="https://i.ibb.co/p1x5173/Screenshot-2021-12-21-011139-removebg-preview.png" alt="" width="100%" />
+                        <img src="https://i.ibb.co/p1x5173/Screenshot-2021-12-21-011139-removebg-preview.png" alt="" width="80%" />
                     </Box>
 
 
@@ -112,7 +121,7 @@ const Header = () => {
                             {pages.map((page, i) => (
                                 <Link style={{ textDecoration: 'none' }} key={i} to={page?.pageLink}>
                                     <MenuItem onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="center" sx={{ color: "black" }}>{page?.title}</Typography>
+                                        <Typography textAlign="center" sx={{ color: "black" }}>{page?.pageTitle}</Typography>
                                     </MenuItem>
                                 </Link>
                             ))}
@@ -137,7 +146,7 @@ const Header = () => {
                                     onClick={handleCloseNavMenu}
                                     sx={{ my: 2, color: 'black', display: 'block' }}
                                 >
-                                    {page?.title}
+                                    {page?.pageTitle}
                                 </Button>
                             </Link>
                         ))}
@@ -173,7 +182,7 @@ const Header = () => {
                             {settings.map((setting, i) => (
                                 <Link style={{ textDecoration: 'none' }} key={i} to={setting?.pageLink}>
                                     <MenuItem onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="center" sx={{ color: "black" }}>{setting?.pageName}</Typography>
+                                        <Typography textAlign="center" sx={{ color: "black" }}>{setting?.pageTitle}</Typography>
                                     </MenuItem>
                                 </Link>
                             ))}

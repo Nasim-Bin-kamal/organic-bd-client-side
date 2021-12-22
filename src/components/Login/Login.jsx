@@ -4,8 +4,31 @@ import React, { useState } from 'react';
 import GoogleIcon from '@mui/icons-material/Google';
 import { NavLink } from 'react-router-dom';
 import MyButton from '../StyledComponents/MyButton';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { setActiveUser, setUserLogOut, selectUserName, selectUserEmail } from '../../redux/slices/userSlice';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import initializeFirebase from '../../firebase/firebase.init';
+
+initializeFirebase()
 
 const Login = () => {
+    const auth = getAuth();
+    const googleProvider = new GoogleAuthProvider();
+    const dispatch = useDispatch();
+    const userName = useSelector(selectUserName)
+    const userEmail = useSelector(selectUserEmail)
+
+    const handleGoogleSingIn = () => {
+        signInWithPopup(auth, googleProvider)
+            .then(result => {
+                dispatch(setActiveUser({
+                    userName: result.user.displayName,
+                    userEmail: result.user.email
+                }))
+            })
+    }
+
     const [loginData, setLoginData] = useState({});
 
 
@@ -56,7 +79,7 @@ const Login = () => {
                     </form>
                     <Box sx={{ mx: 'auto', mt: 3, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                         <Typography variant="subtitle2" sx={{ my: 2 }}>Or Login With</Typography>
-                        <Button variant="outlined" sx={{ borderRadius: 8, px: 3 }}>
+                        <Button onClick={handleGoogleSingIn} variant="outlined" sx={{ borderRadius: 8, px: 3 }}>
                             <GoogleIcon sx={{ mr: 2 }} />
                             Continue With Google
                         </Button>

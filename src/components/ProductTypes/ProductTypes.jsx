@@ -21,7 +21,7 @@ const vegetableTypes = [
 const ProductTypes = () => {
     return (
         <div>
-            <Container sx={{ my: 8 }}>
+            <Container sx={{ my: 10 }}>
                 <Grid container spacing={4}>
                     {
                         vegetableTypes?.map((singleType, i) => <Grid key={i} item xs={12} md={6} lg={4}>
