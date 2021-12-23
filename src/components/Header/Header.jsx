@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Badge } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 const pages = [
     {
@@ -57,6 +58,8 @@ const settings = [
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const cart = useSelector(state => state.products.cart);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -152,9 +155,11 @@ const Header = () => {
                         ))}
                     </Box>
                     <Box sx={{ mr: 3 }}>
-                        <Badge color="secondary" badgeContent={2}>
-                            <ShoppingCartIcon sx={{ fontSize: '30px', color: '#1BAB42' }} />
-                        </Badge>
+                        <Link to="/cart">
+                            <Badge title="Cart page" color="secondary" badgeContent={cart?.length}>
+                                <ShoppingCartIcon sx={{ fontSize: '30px', color: '#1BAB42' }} />
+                            </Badge>
+                        </Link>
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
 

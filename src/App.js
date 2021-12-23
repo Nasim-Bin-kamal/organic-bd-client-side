@@ -6,6 +6,7 @@ import Register from './components/Register/Register';
 import About from './pages/About/About';
 import AddProducts from './pages/AddProducts/AddProducts';
 import AddReview from './pages/AddReview/AddReview';
+import Cart from './pages/Cart/Cart';
 import Contact from './pages/Contact/Contact';
 import Dashboard from './pages/Dashboard/Dashboard';
 import DashboardHome from './pages/DashboardHome/DashboardHome';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/Shop" element={<Shop />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} >

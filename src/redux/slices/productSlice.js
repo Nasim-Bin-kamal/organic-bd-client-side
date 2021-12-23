@@ -17,9 +17,18 @@ const productSlice = createSlice({
     name: 'products',
     initialState: {
         allProducts: [],
+        cart: [],
         isLoading: false
     },
-    reducers: {},
+    reducers: {
+        addToCart: (state, { payload }) => {
+            state.cart.push(payload);
+        },
+        removeFromCart: (state, { payload }) => {
+            state.cart = state.cart.filter(product => product._id !== payload);
+        }
+
+    },
     extraReducers: (builder) => {
         // Add reducers for additional action types here, and handle loading state as needed
 
@@ -52,6 +61,6 @@ const productSlice = createSlice({
 
 })
 
-
+export const { addToCart, removeFromCart } = productSlice.actions
 
 export default productSlice.reducer;
