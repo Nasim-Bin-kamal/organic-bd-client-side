@@ -1,31 +1,32 @@
 import { Container, Fab, Grid, Paper, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect } from 'react';
-import { products } from '../../Data/products';
+// import { products } from '../../Data/products';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../redux/slices/productSlice';
 
 const AllProducts = () => {
-    // const products = useSelector(state => state.products)
+    const dispatch = useDispatch();
+    const { allProducts } = useSelector(state => state?.products)
+    console.log(allProducts);
 
-    // const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     dispatch(getProducts());
-    // }, [])
+    useEffect(() => {
+        dispatch(getProducts());
+    }, [dispatch])
 
 
-    console.log(products);
+
     return (
         <div>
             <Container sx={{ mt: 10 }}>
                 <Typography variant='h4' sx={{ pt: 3, textAlign: 'center' }}>
                     ALL PRODUCTS
                 </Typography>
+
                 <Grid container spacing={4} sx={{ my: 5 }}>
                     {
-                        products?.map((product, v_id) => <Grid key={v_id} item xs={12} md={6} lg={4}>
+                        allProducts?.map((product) => <Grid key={product._id} item xs={12} md={6} lg={4}>
                             <Paper elevation={3}>
                                 <Box className='content'>
                                     <Box className='content-overlay'></Box>

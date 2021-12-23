@@ -17,25 +17,41 @@ const productSlice = createSlice({
     name: 'products',
     initialState: {
         allProducts: [],
-        status: 'idle'
+        isLoading: false
     },
     reducers: {},
     extraReducers: (builder) => {
         // Add reducers for additional action types here, and handle loading state as needed
+
+        builder.addCase(getProducts.pending, (state) => {
+            // Add user to the state array
+            state.isLoading = true;
+        })
         builder.addCase(getProducts.fulfilled, (state, action) => {
             // Add user to the state array
             state.allProducts = action.payload;
-            state.status = "success";
+            state.isLoading = true;
         })
-        builder.addCase(getProducts.pending, (state, action) => {
+        builder.addCase(getProducts.rejected, (state) => {
             // Add user to the state array
-            state.status = "pending";
+            state.isLoading = false;
         })
 
+        // [getProducts.pending]: (state) => {
+        //     state.isLoading = true;
+        // },
+        //     [getProducts.fulfilled]: (state, action) => {
+        //         state.allProducts = action.payload;
+        //         state.isLoading = false;
+        //     },
+        //         [getProducts.rejected]: (state) => {
+        //             state.isLoading = false;
+        //         }
 
     },
 
 })
+
 
 
 export default productSlice.reducer;

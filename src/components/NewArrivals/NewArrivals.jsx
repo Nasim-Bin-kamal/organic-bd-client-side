@@ -1,10 +1,20 @@
 import { Box, Container, Fab, Grid, Paper, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import './NewArrivals.css';
-import { products } from '../../Data/products';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts } from '../../redux/slices/productSlice';
+
 
 const NewArrivals = () => {
+    const dispatch = useDispatch();
+    const { allProducts } = useSelector(state => state?.products)
+    console.log(allProducts);
+
+    useEffect(() => {
+        dispatch(getProducts());
+    }, [dispatch])
+
     return (
         <div>
             <Container>
@@ -14,7 +24,7 @@ const NewArrivals = () => {
 
                 <Grid container spacing={4}>
                     {
-                        products?.map((product, v_id) => <Grid key={v_id} item xs={12} md={6} lg={4}>
+                        allProducts?.map((product, v_id) => <Grid key={v_id} item xs={12} md={6} lg={4}>
                             <Paper elevation={3}>
                                 <Box className='content'>
                                     <Box className='content-overlay'></Box>
