@@ -1,6 +1,5 @@
-import { Box, Container, Fab, Grid, Paper, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import './NewArrivals.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../redux/slices/productSlice';
