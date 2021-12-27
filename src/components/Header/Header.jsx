@@ -11,10 +11,11 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Badge } from '@mui/material';
 import { useSelector } from 'react-redux';
+import './Header.module.css';
 
 const pages = [
     {
@@ -59,7 +60,7 @@ const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const cart = useSelector(state => state.products.cart);
+    const cartItems = useSelector(state => state.cart.cartItems);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -122,11 +123,11 @@ const Header = () => {
                         >
 
                             {pages.map((page, i) => (
-                                <Link style={{ textDecoration: 'none' }} key={i} to={page?.pageLink}>
+                                <NavLink style={{ textDecoration: 'none' }} key={i} to={page?.pageLink}>
                                     <MenuItem onClick={handleCloseNavMenu}>
                                         <Typography textAlign="center" sx={{ color: "black" }}>{page?.pageTitle}</Typography>
                                     </MenuItem>
-                                </Link>
+                                </NavLink>
                             ))}
 
 
@@ -143,7 +144,7 @@ const Header = () => {
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Link style={{ textDecoration: 'none' }} key={Math.random()} to={page?.pageLink}>
+                            <NavLink style={{ textDecoration: 'none' }} key={Math.random()} to={page?.pageLink}>
                                 <Button
                                     key={Math.random()}
                                     onClick={handleCloseNavMenu}
@@ -151,15 +152,15 @@ const Header = () => {
                                 >
                                     {page?.pageTitle}
                                 </Button>
-                            </Link>
+                            </NavLink>
                         ))}
                     </Box>
                     <Box sx={{ mr: 3 }}>
-                        <Link to="/cart">
-                            <Badge title="Cart page" color="secondary" badgeContent={cart?.length}>
+                        <NavLink to="/cart">
+                            <Badge title="Cart page" color="secondary" badgeContent={cartItems?.length}>
                                 <ShoppingCartIcon sx={{ fontSize: '30px', color: '#1BAB42' }} />
                             </Badge>
-                        </Link>
+                        </NavLink>
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
 
@@ -185,11 +186,11 @@ const Header = () => {
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting, i) => (
-                                <Link style={{ textDecoration: 'none' }} key={i} to={setting?.pageLink}>
+                                <NavLink style={{ textDecoration: 'none' }} key={i} to={setting?.pageLink}>
                                     <MenuItem onClick={handleCloseNavMenu}>
                                         <Typography textAlign="center" sx={{ color: "black" }}>{setting?.pageTitle}</Typography>
                                     </MenuItem>
-                                </Link>
+                                </NavLink>
                             ))}
                         </Menu>
                     </Box>

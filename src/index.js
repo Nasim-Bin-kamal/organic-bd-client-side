@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import { getTotal } from './redux/slices/cartSlice';
+
+store.dispatch(getTotal())
 
 ReactDOM.render(
   <React.StrictMode>

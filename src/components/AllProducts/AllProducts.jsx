@@ -1,8 +1,6 @@
-import { Container, Fab, Grid, Paper, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Container, Grid, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 // import { products } from '../../Data/products';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../redux/slices/productSlice';
 import SingleProduct from '../SingleProduct/SingleProduct';
@@ -10,7 +8,7 @@ import SingleProduct from '../SingleProduct/SingleProduct';
 const AllProducts = () => {
     const dispatch = useDispatch();
     const { allProducts } = useSelector(state => state?.products)
-    console.log(allProducts);
+    // console.log(allProducts);
 
     useEffect(() => {
         dispatch(getProducts());

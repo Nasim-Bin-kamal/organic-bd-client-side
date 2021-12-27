@@ -17,16 +17,10 @@ const productSlice = createSlice({
     name: 'products',
     initialState: {
         allProducts: [],
-        cart: [],
         isLoading: false
     },
     reducers: {
-        addToCart: (state, { payload }) => {
-            state.cart.push(payload);
-        },
-        removeFromCart: (state, { payload }) => {
-            state.cart = state.cart.filter(product => product._id !== payload);
-        }
+
 
     },
     extraReducers: (builder) => {
@@ -61,6 +55,6 @@ const productSlice = createSlice({
 
 })
 
-export const { addToCart, removeFromCart } = productSlice.actions
+// export const { } = productSlice.actions
 
 export default productSlice.reducer;

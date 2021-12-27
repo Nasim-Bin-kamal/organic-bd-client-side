@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/Login/Login';
 import NotFound from './components/NotFound/NotFound';
 import Register from './components/Register/Register';
@@ -15,12 +16,15 @@ import ManageOrders from './pages/ManageOrders/ManageOrders';
 import ManageProducts from './pages/ManageProducts/ManageProducts';
 import MyOrders from './pages/MyOrders/MyOrders';
 import Shop from './pages/Shop/Shop';
+import { ToastContainer } from 'react-toastify';
+
 
 
 function App() {
   return (
     <div className="">
       <Router>
+        <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
