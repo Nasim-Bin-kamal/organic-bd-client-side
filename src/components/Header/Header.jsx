@@ -11,11 +11,12 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Badge } from '@mui/material';
 import { useSelector } from 'react-redux';
 import './Header.module.css';
+import useAuth from '../../hooks/useAuth';
 
 const pages = [
     {
@@ -59,6 +60,14 @@ const settings = [
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const { user, userSingOut } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleSignOut = () => {
+        userSingOut(location, navigate);
+    }
 
     const cartItems = useSelector(state => state.cart.cartItems);
 
@@ -122,6 +131,7 @@ const Header = () => {
                             }}
                         >
 
+
                             {pages.map((page, i) => (
                                 <NavLink style={{ textDecoration: 'none' }} key={i} to={page?.pageLink}>
                                     <MenuItem onClick={handleCloseNavMenu}>
@@ -155,6 +165,13 @@ const Header = () => {
                             </NavLink>
                         ))}
                     </Box>
+                    {
+                        user?.email && (
+                            <Box>
+                                <Typography variant='body2' sx={{ color: 'black' }}>{user?.displayName}</Typography>
+                            </Box>
+                        )
+                    }
                     <Box sx={{ mr: 3 }}>
                         <NavLink to="/cart">
                             <Badge title="Cart page" color="secondary" badgeContent={cartItems?.length}>
@@ -185,6 +202,9 @@ const Header = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
+                            <MenuItem onClick={handleSignOut}>
+                                <Typography textAlign="center" sx={{ color: "red" }}>LogOut</Typography>
+                            </MenuItem>
                             {settings.map((setting, i) => (
                                 <NavLink style={{ textDecoration: 'none' }} key={i} to={setting?.pageLink}>
                                     <MenuItem onClick={handleCloseNavMenu}>

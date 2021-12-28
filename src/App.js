@@ -17,34 +17,38 @@ import ManageProducts from './pages/ManageProducts/ManageProducts';
 import MyOrders from './pages/MyOrders/MyOrders';
 import Shop from './pages/Shop/Shop';
 import { ToastContainer } from 'react-toastify';
+import AuthProvider from './contexts/AuthProvider';
 
 
 
 function App() {
   return (
     <div className="">
-      <Router>
-        <ToastContainer />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/Shop" element={<Shop />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} >
-            <Route path="/dashboard" element={<DashboardHome />} />
-            <Route path="/dashboard/manageOrders" element={<ManageOrders />} />
-            <Route path="/dashboard/addProducts" element={<AddProducts />} />
-            <Route path="/dashboard/manageProducts" element={<ManageProducts />} />
-            <Route path="/dashboard/myOrders" element={<MyOrders />} />
-            <Route path="/dashboard/addReview" element={<AddReview />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <ToastContainer />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/Shop" element={<Shop />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />} >
+              <Route path="/dashboard" element={<DashboardHome />} />
+              <Route path="/dashboard/manageOrders" element={<ManageOrders />} />
+              <Route path="/dashboard/addProducts" element={<AddProducts />} />
+              <Route path="/dashboard/manageProducts" element={<ManageProducts />} />
+              <Route path="/dashboard/myOrders" element={<MyOrders />} />
+              <Route path="/dashboard/addReview" element={<AddReview />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+
 
     </div>
   );

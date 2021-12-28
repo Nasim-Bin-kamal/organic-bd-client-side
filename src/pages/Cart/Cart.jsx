@@ -32,7 +32,7 @@ const Cart = () => {
 
 
                 {
-                    cart?.cartItems?.lenght === 0 ? (
+                    cart?.cartItems?.length === 0 ? (
                         <Box>
                             <Typography variant='h5'>
                                 My Cart: {cart?.cartItems?.length}

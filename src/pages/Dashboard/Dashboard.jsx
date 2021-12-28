@@ -63,8 +63,15 @@ function Dashboard(props) {
             <List>
                 <ListItem button>
                     <Link to="/home" style={{ textDecoration: 'none' }}>
-                        <MenuItem>
+                        <MenuItem >
                             <Typography textAlign="center" sx={{ color: "black" }}>Home</Typography>
+                        </MenuItem>
+                    </Link>
+                </ListItem>
+                <ListItem button>
+                    <Link to="/shop" style={{ textDecoration: 'none' }}>
+                        <MenuItem >
+                            <Typography textAlign="center" sx={{ color: "black" }}>Shop</Typography>
                         </MenuItem>
                     </Link>
                 </ListItem>
@@ -171,7 +178,7 @@ function Dashboard(props) {
             </Box>
             <Box
                 component="main"
-                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }, backgroundColor: '#edf3f7' }}
+                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
                 <Outlet />

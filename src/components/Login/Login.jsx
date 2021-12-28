@@ -1,37 +1,43 @@
-import { Button, Container, TextField, Typography } from '@mui/material';
+import { Alert, Button, Container, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import GoogleIcon from '@mui/icons-material/Google';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import MyButton from '../StyledComponents/MyButton';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { setActiveUser, setUserLogOut, selectUserName, selectUserEmail } from '../../redux/slices/userSlice';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import initializeFirebase from '../../firebase/firebase.init';
+import useAuth from '../../hooks/useAuth';
 
-initializeFirebase()
+
 
 const Login = () => {
-    const auth = getAuth();
-    const googleProvider = new GoogleAuthProvider();
-    const dispatch = useDispatch();
-    const userName = useSelector(selectUserName)
-    const userEmail = useSelector(selectUserEmail)
+    // const auth = getAuth();
+    // const googleProvider = new GoogleAuthProvider();
+    // const dispatch = useDispatch();
+    // const userName = useSelector(selectUserName)
+    // const userEmail = useSelector(selectUserEmail)
 
-    const handleGoogleSingIn = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                dispatch(setActiveUser({
-                    userName: result.user.displayName,
-                    userEmail: result.user.email
-                }))
-            })
-    }
+    // const handleGoogleSingIn = () => {
+    //     signInWithPopup(auth, googleProvider)
+    //         .then(result => {
+    //             dispatch(setActiveUser({
+    //                 userName: result.user.displayName,
+    //                 userEmail: result.user.email
+    //             }))
+    //         })
+    // }
+    const { signInWithGoogle, userSignIn, errorMsg } = useAuth();
 
     const [loginData, setLoginData] = useState({});
 
+    const location = useLocation();
+    const navigate = useNavigate();
 
+    const handleGoogleSingIn = () => {
+        signInWithGoogle(location, navigate);
+    }
     const handleOnBlur = (e) => {
         const newLoginData = { ...loginData };
         newLoginData[e.target.name] = e.target.value;
@@ -42,6 +48,7 @@ const Login = () => {
 
     const handleUserLogin = (e) => {
         e.preventDefault();
+        userSignIn(loginData?.email, loginData?.password, location, navigate);
     }
     return (
         <div>
@@ -50,6 +57,9 @@ const Login = () => {
                     <Typography variant="h4" sx={{ m: 'auto', pb: 3, textAlign: 'center', color: '#1BAB42' }}>
                         Login Please
                     </Typography>
+                    {
+                        errorMsg && <Alert sx={{ my: 3 }} severity="error" dismissible >{errorMsg}</Alert>
+                    }
                     <form onSubmit={handleUserLogin}>
                         <TextField
                             onBlur={handleOnBlur}

@@ -6,7 +6,6 @@ import { getTotal } from './slices/cartSlice';
 
 export const store = configureStore({
     reducer: {
-        user: userReducer,
         products: productReducer,
         cart: cartReducer
     },
