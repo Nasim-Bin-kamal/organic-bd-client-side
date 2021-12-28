@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 
+
 export const getProducts = createAsyncThunk(
     'products/getProducts',
     async () => {
@@ -20,6 +21,11 @@ const productSlice = createSlice({
         isLoading: false
     },
     reducers: {
+        deleteProduct: (state, { payload }) => {
+            state.allProducts = state.allProducts.filter(
+                (product) => product._id !== payload
+            );
+        }
 
 
     },
@@ -55,6 +61,6 @@ const productSlice = createSlice({
 
 })
 
-// export const { } = productSlice.actions
+export const { deleteProduct } = productSlice.actions
 
 export default productSlice.reducer;
