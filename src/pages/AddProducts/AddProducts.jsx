@@ -1,11 +1,11 @@
 import { Container, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import axios from 'axios';
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form'
 import MyButton from '../../components/StyledComponents/MyButton';
 import { makeStyles } from '@mui/styles';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../redux/slices/productSlice';
 
 
 const useStyles = makeStyles({
@@ -32,24 +32,13 @@ const AddProducts = () => {
     const { addForm, inputField } = useStyles();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-    const successNotify = () => {
-        toast.success('Successfully Added a Product', {
-            autoClose: 2000,
-            position: 'bottom-left'
-        });
-    }
+    const dispatch = useDispatch();
 
     const onSubmit = data => {
-        axios.post('https://safe-beach-17728.herokuapp.com/products', data)
-            .then(res => {
-                if (res?.data?.insertedId) {
-                    successNotify();
-                    reset();
+        dispatch(addProduct(data));
+        reset();
 
-                }
-
-            });
-    };
+    }
 
     console.log(errors);
 

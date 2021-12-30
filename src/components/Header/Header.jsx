@@ -183,7 +183,7 @@ const Header = () => {
 
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar alt="" src={user?.photoURL} />
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -202,9 +202,11 @@ const Header = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            <MenuItem onClick={handleSignOut}>
-                                <Typography textAlign="center" sx={{ color: "red" }}>LogOut</Typography>
-                            </MenuItem>
+                            {user?.email &&
+                                <MenuItem onClick={handleSignOut}>
+                                    <Typography textAlign="center" sx={{ color: "red" }}>LogOut</Typography>
+                                </MenuItem>
+                            }
                             {settings.map((setting, i) => (
                                 <NavLink style={{ textDecoration: 'none' }} key={i} to={setting?.pageLink}>
                                     <MenuItem onClick={handleCloseNavMenu}>

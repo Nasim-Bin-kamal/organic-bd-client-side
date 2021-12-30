@@ -126,6 +126,7 @@ const useFirebase = () => {
             .then(result => {
                 setErrorMsg('');
                 const user = result?.user;
+                console.log(result);
 
                 //save user date to database
                 saveUserData(user?.email, user?.displayName, 'PUT');

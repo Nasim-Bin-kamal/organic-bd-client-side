@@ -1,6 +1,7 @@
 import { Card, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import MyButton from '../StyledComponents/MyButton';
 
 const vegetableTypes = [
@@ -31,7 +32,9 @@ const ProductTypes = () => {
                                         <Typography variant="h5" sx={{ fontWeight: 500 }}>
                                             {singleType?.type} Vegetables
                                         </Typography>
-                                        <MyButton sx={{ mt: 5 }}>Shop Now</MyButton>
+                                        <Link to="/shop" style={{ textDecoration: 'none' }}>
+                                            <MyButton sx={{ mt: 5 }}>Shop Now</MyButton>
+                                        </Link>
                                     </CardContent>
                                 </Box>
                                 <CardMedia

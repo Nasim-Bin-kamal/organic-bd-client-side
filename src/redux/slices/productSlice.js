@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 export const getProducts = createAsyncThunk(
@@ -13,38 +14,77 @@ export const getProducts = createAsyncThunk(
 
 )
 
+export const addProduct = createAsyncThunk(
+    'products/addProduct',
+    async (data, { rejectWithValue }) => {
+        try {
+            const response = await axios.post('http://localhost:5000/products', data)
+            return response.data;
+
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
+export const deleteProduct = createAsyncThunk(
+    "products/deleteProduct",
+    async (_id, { rejectWithValue }) => {
+        try {
+            const response = await axios.delete(`http://localhost:5000/products/${_id}`);
+            // return response.data;
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.response?.data);
+        }
+    }
+);
+
 
 const productSlice = createSlice({
     name: 'products',
     initialState: {
         allProducts: [],
+        updateProduct: '',
+        deleteProduct: '',
         isLoading: false
     },
     reducers: {
-        deleteProduct: (state, { payload }) => {
-            state.allProducts = state.allProducts.filter(
-                (product) => product._id !== payload
-            );
-        }
-
 
     },
     extraReducers: (builder) => {
         // Add reducers for additional action types here, and handle loading state as needed
 
         builder.addCase(getProducts.pending, (state) => {
-            // Add user to the state array
             state.isLoading = true;
         })
         builder.addCase(getProducts.fulfilled, (state, action) => {
-            // Add user to the state array
             state.allProducts = action.payload;
             state.isLoading = true;
         })
         builder.addCase(getProducts.rejected, (state) => {
-            // Add user to the state array
             state.isLoading = false;
         })
+        builder.addCase(addProduct.fulfilled, (state, action) => {
+            state.allProducts.push(action.payload);
+            toast.success(`New Product Added To Shop`, {
+                position: "bottom-left",
+                autoClose: 2000,
+            });
+        })
+        builder.addCase(deleteProduct.fulfilled, (state, action) => {
+            state.allProducts = state.allProducts.filter(
+                (product) => product._id !== action.payload
+            );
+            toast.error(`Deleted product successfully`, {
+                position: "bottom-left",
+                autoClose: 2000,
+            });
+        })
+
+
 
         // [getProducts.pending]: (state) => {
         //     state.isLoading = true;
@@ -61,6 +101,6 @@ const productSlice = createSlice({
 
 })
 
-export const { deleteProduct } = productSlice.actions
+// export const { } = productSlice.actions
 
 export default productSlice.reducer;

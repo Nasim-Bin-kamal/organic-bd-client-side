@@ -27,12 +27,9 @@ const Cart = () => {
         <div>
             <Header />
             <Container>
-
-
-
                 {
                     cart?.cartItems?.length === 0 ? (
-                        <Box sx={{ mt: 20, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                        <Box sx={{ my: 20, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                             <Typography variant='h5' sx={{ pb: 2 }}>
                                 YOUR CART IS EMPTY GO BACK TO SHOPPING
                             </Typography>

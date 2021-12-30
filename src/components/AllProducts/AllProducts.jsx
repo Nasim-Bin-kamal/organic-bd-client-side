@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from '@mui/material';
+import { CircularProgress, Container, Grid, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 // import { products } from '../../Data/products';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +18,7 @@ const AllProducts = () => {
 
     return (
         <div>
-            <Container sx={{ mt: 10 }}>
+            <Container sx={{ my: 10 }}>
                 <Typography variant='h4' sx={{ pt: 3, textAlign: 'center' }}>
                     ALL PRODUCTS
                 </Typography>

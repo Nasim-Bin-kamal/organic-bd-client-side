@@ -18,6 +18,7 @@ import MyOrders from './pages/MyOrders/MyOrders';
 import Shop from './pages/Shop/Shop';
 import { ToastContainer } from 'react-toastify';
 import AuthProvider from './contexts/AuthProvider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 
 
@@ -36,7 +37,10 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />} >
+
+            <Route path="/dashboard" element={<PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>}>
               <Route path="/dashboard" element={<DashboardHome />} />
               <Route path="/dashboard/manageOrders" element={<ManageOrders />} />
               <Route path="/dashboard/addProducts" element={<AddProducts />} />
@@ -44,6 +48,7 @@ function App() {
               <Route path="/dashboard/myOrders" element={<MyOrders />} />
               <Route path="/dashboard/addReview" element={<AddReview />} />
             </Route>
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>

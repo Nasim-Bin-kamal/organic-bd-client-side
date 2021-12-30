@@ -9,7 +9,7 @@ import SingleProduct from '../SingleProduct/SingleProduct';
 const NewArrivals = () => {
     const dispatch = useDispatch();
     const { allProducts } = useSelector(state => state?.products)
-    console.log(allProducts);
+    // console.log(allProducts);
 
     useEffect(() => {
         dispatch(getProducts());
