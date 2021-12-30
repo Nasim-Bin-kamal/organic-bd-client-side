@@ -18,7 +18,7 @@ export const addProduct = createAsyncThunk(
     'products/addProduct',
     async (data, { rejectWithValue }) => {
         try {
-            const response = await axios.post('http://localhost:5000/products', data)
+            const response = await axios.post('http://safe-beach-17728.herokuapp.com/products', data)
             return response.data;
 
         } catch (error) {
@@ -32,7 +32,7 @@ export const deleteProduct = createAsyncThunk(
     "products/deleteProduct",
     async (_id, { rejectWithValue }) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/products/${_id}`);
+            const response = await axios.delete(`http://safe-beach-17728.herokuapp.com/products/${_id}`);
             // return response.data;
             console.log(response);
         } catch (error) {
