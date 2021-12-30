@@ -33,18 +33,15 @@ const ManageProducts = () => {
                 <Typography variant='h4' sx={{ mx: 'auto', my: 5, textAlign: 'center' }}>
                     Manage All Products
                 </Typography>
-                <Box>
-
-                </Box>
-                <Grid >
+                {/* <Box>
                     <TableContainer component={Paper}>
-                        <Table sx={{ minWidth: 650 }} aria-label="products Table">
+                        <Table sx={{ minWidth: 650, widht: '100%' }} aria-label="products Table">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>ID</TableCell>
-                                    <TableCell align="right">Product Name</TableCell>
-                                    <TableCell align="right">Price</TableCell>
-                                    <TableCell align="right">Update/Delete</TableCell>
+                                    <TableCell align="center">ID</TableCell>
+                                    <TableCell align="center">Product Name</TableCell>
+                                    <TableCell align="center">Price</TableCell>
+                                    <TableCell align="center">Update/Delete</TableCell>
 
                                 </TableRow>
                             </TableHead>
@@ -54,12 +51,12 @@ const ManageProducts = () => {
                                         key={product?._id}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
-                                        <TableCell component="th" scope="row">
+                                        <TableCell align='center'>
                                             {product?._id}
                                         </TableCell>
-                                        <TableCell align="right">{product?.name}</TableCell>
-                                        <TableCell align="right">{product?.price}Tk</TableCell>
-                                        <TableCell align="right">
+                                        <TableCell align="center">{product?.name}</TableCell>
+                                        <TableCell align="center">{product?.price}Tk</TableCell>
+                                        <TableCell align="center">
                                             <Button onClick={() => dispatch(deleteProduct(product?._id))} variant='outlined'>Delete</Button>
                                         </TableCell>
                                     </TableRow>
@@ -67,7 +64,10 @@ const ManageProducts = () => {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                </Grid>
+                </Box> */}
+
+
+
             </Container>
         </div>
     );

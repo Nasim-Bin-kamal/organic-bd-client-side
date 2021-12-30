@@ -17,7 +17,7 @@ const NewArrivals = () => {
 
     return (
         <div>
-            <Container>
+            <Container sx={{ mb: 10 }}>
                 <Typography variant='h4' sx={{ mx: 'auto', py: 5, textAlign: 'center', fontWeight: 500 }}>
                     Top Seasonal products
                 </Typography>

@@ -7,12 +7,6 @@ import { toast } from 'react-toastify';
 import MyButton from '../../components/StyledComponents/MyButton';
 import { makeStyles } from '@mui/styles';
 
-const style = {
-    maxWidth: '500px',
-    display: 'flex',
-    flexDirection: 'column',
-    margin: 'auto'
-}
 
 const useStyles = makeStyles({
     addForm: {

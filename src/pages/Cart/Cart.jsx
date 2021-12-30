@@ -13,6 +13,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const Cart = () => {
     const cart = useSelector(state => state.cart);
@@ -26,23 +27,26 @@ const Cart = () => {
         <div>
             <Header />
             <Container>
-                <Typography variant='h4' sx={{ mx: 'auto', mt: 14, mb: 5, textAlign: 'center' }}>
-                    Shopping Cart : {cart?.cartItems?.length}
-                </Typography>
+
 
 
                 {
                     cart?.cartItems?.length === 0 ? (
-                        <Box>
-                            <Typography variant='h5'>
-                                My Cart: {cart?.cartItems?.length}
+                        <Box sx={{ mt: 20, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                            <Typography variant='h5' sx={{ pb: 2 }}>
+                                YOUR CART IS EMPTY GO BACK TO SHOPPING
                             </Typography>
-                            <Link to="/shop">
-                                <MyButton>Shop</MyButton>
+                            <Link to="/shop" style={{ textDecoration: 'none' }}>
+                                <MyButton>
+                                    <ArrowBackIcon sx={{ mr: 2 }} />  Shop
+                                </MyButton>
                             </Link>
                         </Box>
                     ) : (
                         <div>
+                            <Typography variant='h4' sx={{ mx: 'auto', mt: 14, mb: 5, textAlign: 'center' }}>
+                                Shopping Cart : {cart?.cartItems?.length}
+                            </Typography>
 
                             <Grid container spacing={2}>
                                 {/* <Grid item xs={12} md={12} lg={9} sx={{ mx: 'auto', display: 'flex', justifyContent: 'center' }}>
