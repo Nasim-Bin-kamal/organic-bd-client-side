@@ -120,10 +120,12 @@ const Cart = () => {
                                 <Typography variant='h6'>
                                     Subtotal: {cart?.cartTotalAmount} Tk
                                 </Typography>
-                                <MyButton sx={{ my: 3 }}>
-                                    Proceed To Checkout
-                                    <ArrowForwardIcon sx={{ ml: 1 }} />
-                                </MyButton>
+                                <Link to="/checkout" style={{ textDecoration: 'none' }}>
+                                    <MyButton sx={{ my: 3 }}>
+                                        Proceed To Checkout
+                                        <ArrowForwardIcon sx={{ ml: 1 }} />
+                                    </MyButton>
+                                </Link>
                             </Box>
 
                         </div>

@@ -14,11 +14,36 @@ export const getProducts = createAsyncThunk(
 
 )
 
+
+export const getReviews = createAsyncThunk(
+    'products/getReviews',
+    async () => {
+        const response = await fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+        return response;
+
+    }
+
+)
+
 export const addProduct = createAsyncThunk(
     'products/addProduct',
     async (data, { rejectWithValue }) => {
         try {
             const response = await axios.post('http://safe-beach-17728.herokuapp.com/products', data)
+            return response.data;
+
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+export const addReview = createAsyncThunk(
+    'products/addReview',
+    async (data, { rejectWithValue }) => {
+        try {
+            const response = await axios.post('http://localhost:5000/reviews', data)
             return response.data;
 
         } catch (error) {
@@ -49,6 +74,7 @@ const productSlice = createSlice({
         allProducts: [],
         updateProduct: '',
         deleteProduct: '',
+        reviews: [],
         isLoading: false
     },
     reducers: {
@@ -62,7 +88,7 @@ const productSlice = createSlice({
         })
         builder.addCase(getProducts.fulfilled, (state, action) => {
             state.allProducts = action.payload;
-            state.isLoading = true;
+            state.isLoading = false;
         })
         builder.addCase(getProducts.rejected, (state) => {
             state.isLoading = false;
@@ -82,6 +108,23 @@ const productSlice = createSlice({
                 position: "bottom-left",
                 autoClose: 2000,
             });
+        })
+        builder.addCase(addReview.fulfilled, (state, action) => {
+            state.reviews.push(action.payload);
+            toast.success(`Successfully Reviewed`, {
+                position: "bottom-left",
+                autoClose: 2000,
+            });
+        })
+        builder.addCase(getReviews.pending, (state) => {
+            state.isLoading = true;
+        })
+        builder.addCase(getReviews.fulfilled, (state, action) => {
+            state.reviews = action.payload;
+            state.isLoading = false;
+        })
+        builder.addCase(getReviews.rejected, (state) => {
+            state.isLoading = false;
         })
 
 

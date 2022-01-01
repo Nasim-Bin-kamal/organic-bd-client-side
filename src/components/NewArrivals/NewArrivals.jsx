@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from '@mui/material';
+import { Box, CircularProgress, Container, Grid, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import './NewArrivals.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,12 +8,22 @@ import SingleProduct from '../SingleProduct/SingleProduct';
 
 const NewArrivals = () => {
     const dispatch = useDispatch();
-    const { allProducts } = useSelector(state => state?.products)
+    const { allProducts, isLoading } = useSelector(state => state?.products)
     // console.log(allProducts);
 
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch])
+
+    if (isLoading) {
+        return (
+            <Box sx={{ my: 5, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <CircularProgress color="secondary" />
+                <CircularProgress color="success" />
+                <CircularProgress color="inherit" />
+            </Box>
+        )
+    }
 
     return (
         <div>

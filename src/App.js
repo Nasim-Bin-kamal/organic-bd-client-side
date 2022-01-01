@@ -16,6 +16,7 @@ import ManageOrders from './pages/ManageOrders/ManageOrders';
 import ManageProducts from './pages/ManageProducts/ManageProducts';
 import MyOrders from './pages/MyOrders/MyOrders';
 import Shop from './pages/Shop/Shop';
+import Checkout from './pages/Checkout/Checkout.jsx';
 import { ToastContainer } from 'react-toastify';
 import AuthProvider from './contexts/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -38,17 +39,20 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
-            <Route path="/dashboard" element={<PrivateRoute>
+            <Route path="/dashboard/*" element={<PrivateRoute>
               <Dashboard />
             </PrivateRoute>}>
-              <Route path="/dashboard" element={<DashboardHome />} />
-              <Route path="/dashboard/manageOrders" element={<ManageOrders />} />
-              <Route path="/dashboard/addProducts" element={<AddProducts />} />
-              <Route path="/dashboard/manageProducts" element={<ManageProducts />} />
-              <Route path="/dashboard/myOrders" element={<MyOrders />} />
-              <Route path="/dashboard/addReview" element={<AddReview />} />
+              <Route path="" element={<DashboardHome />} />
+              <Route path="manageOrders" element={<ManageOrders />} />
+              <Route path="addProducts" element={<AddProducts />} />
+              <Route path="manageProducts" element={<ManageProducts />} />
+              <Route path="myOrders" element={<MyOrders />} />
+              <Route path="addReview" element={<AddReview />} />
             </Route>
 
+            <Route path="/checkout" element={<PrivateRoute>
+              <Checkout />
+            </PrivateRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
