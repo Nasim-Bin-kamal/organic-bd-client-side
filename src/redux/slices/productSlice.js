@@ -18,7 +18,7 @@ export const getProducts = createAsyncThunk(
 export const getReviews = createAsyncThunk(
     'products/getReviews',
     async () => {
-        const response = await fetch('http://localhost:5000/reviews')
+        const response = await fetch('http://safe-beach-17728.herokuapp.com/reviews')
             .then(res => res.json())
         return response;
 
@@ -43,7 +43,7 @@ export const addReview = createAsyncThunk(
     'products/addReview',
     async (data, { rejectWithValue }) => {
         try {
-            const response = await axios.post('http://localhost:5000/reviews', data)
+            const response = await axios.post('http://safe-beach-17728.herokuapp.com/reviews', data)
             return response.data;
 
         } catch (error) {
